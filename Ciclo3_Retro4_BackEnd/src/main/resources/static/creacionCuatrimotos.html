@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Cuadrimotos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./images/cuadrimoto.ico" type="image/x-icon">
+    <script type="text/javascript" src="./scripts/functiones.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .table-striped>tbody>tr:nth-child(odd)>td, 
+        .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: rgb(170, 238, 250);
+        }
+        .table-striped>tbody>tr:nth-child(even)>td, 
+        .table-striped>tbody>tr:nth-child(even)>th {
+        background-color: rgb(2, 74, 102);
+        }
+        .table-striped>thead>tr>th {
+            background-color: rgb(0, 204, 255);
+        }
+        .table-bordered>thead>tr>th {
+            background-color: rgb(25, 51, 58);
+        }
+        .table-bordered>tbody>tr>th {
+        background-color: rgb(18, 184, 250);
+        }
+    </style>
+
+</head>
+
+<body style="background-color: rgb(31, 133, 228)">
+
+    <script type="text/javascript"> 
+        window.onload = traerInformacionCuadri();
+    </script>
+
+<!-- encabezado -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-4" style="background-color:rgb(0, 153, 255)">
+            <br>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-8 shadow-lg p-3 mb-0 rounded"  style="background-color:rgb(0, 153, 255)">
+                            <img src="images/cuadrimoto.png" id="imagen1" width="160" height="160" />
+                        </div>
+                    </div>
+                </div>
+            <br>
+        </div>
+        <div class="col-lg-8"  style="background-color:rgb(0, 153, 255)">
+            <br>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-8"  style="background-color:rgb(0, 153, 255)">
+                            <div class="p-3 mb-2 bg-transparent text-white"><p class="text-center"><h1 class="display-1">Administración Cuadrimotos</h1></p></div> 
+                        </div>
+                    </div>
+                </div>
+            <br>
+        </div>
+    </div>  
+</div>
+
+<!-- encabezado -->
+
+    <!-- tabla -->
+    <div class="container  shadow-lg" >
+        <br>
+            <div id="resultado2"></div>
+        <br>
+    </div>
+    <!-- tabla -->
+    
+    <div class="container shadow-lg">
+        <button class="btn btn-primary" type="submit"onclick="traerInformacionCuadri()">Consultar</button>
+    </div>
+
+<div class="container shadow-lg">
+    <form form class="row g-3 needs-validation" novalidate>
+        
+        <div class="col-md-2 mb-5">
+            <label for="idCliente">Nº Cuad.</label>
+            <input type="number" class="form-control" id="idCuadri" disabled="disabled">
+            <div class="valid-feedback">Campo Válido</div>
+            <div class="invalid-feedback">Campo Inválido</div>
+        </div>
+
+        <div class="col-md-2 mb-5">  
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" required>
+            <div class="valid-feedback">Campo Válido</div>
+            <div class="invalid-feedback">Campo Inválido</div>
+        </div>
+
+        <div class="col-md-2 mb-5">  
+            <label for="marca">Marca</label>
+            <input type="text" class="form-control" id="marca" required>
+            <div class="valid-feedback">Campo Válido</div>
+            <div class="invalid-feedback">Campo Inválido</div>
+        </div>
+
+        <div class="col-md-2 mb-5">  
+            <label for="año">Año</label>
+            <input type="text" class="form-control" id="año" required>
+            <div class="valid-feedback">Campo Válido</div>
+            <div class="invalid-feedback">Campo Inválido</div>
+        </div>
+
+        <div class="col-md-2 mb-5">  
+            <label for="descripcion">Descripcion</label>
+            <input type="text" class="form-control" id="descripcion" required>
+            <div class="valid-feedback">Campo Válido</div>
+            <div class="invalid-feedback">Campo Inválido</div>
+        </div>
+        
+        <div class="col-md-2 mb-5">  
+            <label for="relacion-categoria">Categoria</label>
+            <div>
+                <select class="form-select"id="relacion-categoria" required></select>
+            </div>
+            <div class="valid-feedback">Campo Válido</div>
+            <div class="invalid-feedback">Campo Inválido</div>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary" name="guardar">Guardar</button>
+            <button type="submit" class="btn btn-primary" name="editar" >Actualizar</button>
+            <button class="btn btn-primary" type="submit" onclick="limpiarElementoCuadri()">Limpiar</button>
+            <a class="btn btn-primary" href="index.html"  role="button">Regresar</a>
+            <br> 
+        </div>
+    </form>
+    <br>
+</div>
+
+<div class="container shadow-lg">
+    <div class="row" style="background-color: rgb(0, 153, 255);">
+        <label style="color:white">Desarrollado por:
+            <a href="mailto:cesar.meza.mt@correo.usa.edu.co" style="color: rgb(0, 17, 255);">César Alberto Meza González</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            &copy; 2021 - Todos los derechos reservados.
+        </label>
+    </div>
+</div>
+
+<script>
+    
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+        }
+        else{
+            if(event.submitter.name=="guardar"){
+                guardarInformacionCuadri();
+            }
+            if(event.submitter.name=="editar"){
+                editarInformacionCuadri();
+            }
+        }
+        form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+
+</body>
+</html>
